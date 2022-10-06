@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+</head>
+<body>
+    <main>
+        <article class="widget">
+            <form class="weatherLocation" action="/weather" method="post">
+                <% if(weatherData.length == 0) { %>
+                    <input name="city" autocomplete="off" type="text" class="cityName" placeholder="city name" required>
+                    <input id="searchBtn1" class="searchBtn" type="submit" value="Search">
+                <% } else { %>
+                    <table border="1">
+                        <input name="city" autocomplete="off" type="text" class="cityName" placeholder="city name">
+                        <input id="searchBtn2" class="searchBtn" type="submit" value="Search">
+                        <tr>
+                            <td><%= selectCity %></td>  <!-- city -->
+                            <td>Min : <%= weatherData[4] %> </td> <!-- temp_min -->
+                            <td rowspan="5">
+                                <select name="selectNo" value="<%= selectedDate %>">   <!-- options -->
+                                    <% for ( var i = 0; i < weatherData[9].length; i++ ){ %>
+                                        <option value="<%= weatherData[9][i][0] %>">
+                                            <%= weatherData[9][i][1] %>
+                                        </option>
+                                    <% } %>
+                                    <input type="submit" class="searchBtn" value="Search">
+                                    <div>
+                                        <% for(var i = 0; i < weatherData[8].length; i++) { %>
+                                            <span><%= weatherData[8][i][2] %></span>
+                                            <span><%= weatherData[8][i][5] %></span>
+                                            <span><img src="<%= weatherData[8][i][9] %>"></span>
+                                            <span><%= weatherData[8][i][6] %></span>
+                                            <br>
+                                        <% } %>
+                                    </div>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3"><img src="<%= weatherData[7] %>"></td> <!-- icon -->
+                            <td>Max : <%= weatherData[5] %> </td> <!-- temp_max -->
+                        </tr>
+                        <tr>
+                            <td>Humid : <%= weatherData[6] %> %</td> <!-- temp_max -->
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><%= weatherData[2] %></td> <!-- description -->
+                        </tr>
+                        <tr>
+                            <td><%= weatherData[3] %></td> <!-- temp -->
+                        </tr>
+                    </table>
+                <% } %>
+                <input type="hidden" name="selectCity" value="<%= selectCity%>">
+            </form>
+        </article>
+    </main>
+</body>
+</html>

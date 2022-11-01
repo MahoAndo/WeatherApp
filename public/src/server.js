@@ -65,9 +65,6 @@ app.post("/weather", (req, res) =>{
             return res.send({error});
         }else{
             weData.push(selectedArr, options);
-            // console.log(weData);
-            console.log(selectedNo);
-            console.log(weData[9][selectedNo][1]);
             res.render('weather', 
             {
                 weatherData : weData,

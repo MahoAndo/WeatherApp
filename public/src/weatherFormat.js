@@ -92,4 +92,3 @@ exports.getPulldown = function(dataList){
     }
     return optionList;
 }
-

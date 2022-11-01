@@ -55,7 +55,6 @@ exports.fiveDaysWeatherData = (cityName, selectNo, callback) => {
                 for (let j = 0; j < fiveDays.length; j++) {
                     if (fiveDays[j][0] == selectNo)
                         selectedArr.push(fiveDays[j]);
-                        //console.log(selectNo);
                 };
                 callback(undefined,{selectedArr, options})
         }

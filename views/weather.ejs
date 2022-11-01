@@ -14,30 +14,32 @@
                     <input name="city" autocomplete="off" type="text" class="cityName" placeholder="city name" required>
                     <input id="searchBtn1" class="searchBtn" type="submit" value="Search">
                 <% } else { %>
-                    <table border="1">
+                    <table border="1" style="width: 800px; height: 500px;">
                         <input name="city" autocomplete="off" type="text" class="cityName" placeholder="city name">
                         <input id="searchBtn2" class="searchBtn" type="submit" value="Search">
+                        <br>
                         <tr>
-                            <td><%= selectCity %></td>  <!-- city -->
-                            <td>Min : <%= weatherData[4] %> </td> <!-- temp_min -->
-                            <td rowspan="5">
-                                <select name="selectNo" value="<%= selectedDate %>">   <!-- options -->
+                            <td style="width: 300px"><%= selectCity %></td>  <!-- city -->
+                            <td style="width: 200px">Min : <%= weatherData[4] %> </td> <!-- temp_min -->
+                            <td rowspan="5" style="width: 300px">
+                                <select name="selectNo" value="<%= selectedDate %>">
                                     <% for ( var i = 0; i < weatherData[9].length; i++ ){ %>
-                                        <option value="<%= weatherData[9][i][0] %>">
+                                        <option  <%= weatherData[9][i][1] == selectedDate ? "selected" : "" %> value="<%= weatherData[9][i][0] %>">
                                             <%= weatherData[9][i][1] %>
                                         </option>
-                                    <% } %>
-                                    <input type="submit" class="searchBtn" value="Search">
-                                    <div>
-                                        <% for(var i = 0; i < weatherData[8].length; i++) { %>
-                                            <span><%= weatherData[8][i][2] %></span>
-                                            <span><%= weatherData[8][i][5] %></span>
-                                            <span><img src="<%= weatherData[8][i][9] %>"></span>
-                                            <span><%= weatherData[8][i][6] %></span>
-                                            <br>
-                                        <% } %>
-                                    </div>
+                                <% } %>
                                 </select>
+                                <input type="submit" class="searchBtn" value="Search">
+                                <br>
+                                <div style="overflow: scroll ">
+                                    <% for(var i = 0; i < weatherData[8].length; i++) { %>
+                                        <span><%= weatherData[8][i][2] %></span>
+                                        <span><%= weatherData[8][i][5] %></span>
+                                        <span><img src="<%= weatherData[8][i][9] %>"></span>
+                                        <span><%= weatherData[8][i][6] %></span>
+                                        <br>
+                                    <% } %>
+                                </div>
                             </td>
                         </tr>
                         <tr>
